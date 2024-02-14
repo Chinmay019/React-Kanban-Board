@@ -1,0 +1,13 @@
+.list-header {
+    text-align: center;
+    margin: auto;
+}
+
+.list-column {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    min-width: 30vh;
+    height: 50vh;
+    min-height: 200px;
+}

@@ -1,0 +1,9 @@
+.item-header {
+    padding-left: 5px;
+    margin: 0;
+}
+
+.task {
+    position: relative;
+    cursor: pointer;
+}
