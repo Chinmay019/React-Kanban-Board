@@ -6,5 +6,5 @@ export type ItemProps = {
     id: string,
     title: string,
     description: string,
-    type: number
+    category: string
 }

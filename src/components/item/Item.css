@@ -7,3 +7,15 @@
     position: relative;
     cursor: pointer;
 }
+
+.to-do {
+    border: 2px solid blue;
+}
+
+.doing {
+    border: 2px solid yellow;
+}
+
+.done {
+    border: 2px solid green;
+}
