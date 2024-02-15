@@ -2,7 +2,6 @@ import { ItemProps } from "../../models/Types";
 import "./Item.css";
 
 export const Item = (props: ItemProps) => {
-    console.log(props);
     const itemName: string = props.title;
     const itemDescription: string = props.description;
     let itemClass: string = '';
@@ -29,7 +28,7 @@ export const Item = (props: ItemProps) => {
                             { itemName }
                         </h5>
                     </div>
-                    <div className="card-body">
+                    <div className="card-body break-words">
                         { itemDescription }
                     </div>
                 </div>
