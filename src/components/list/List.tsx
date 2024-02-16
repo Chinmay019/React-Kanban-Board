@@ -57,6 +57,7 @@ export const List = (props: BoardProps) => {
             } else if (item.id == draggedElementId && item.category != targetCategory) {
                 const classes = e.target.className;
                 if (classes.includes("dropzone")) {
+                    item.category = targetCategory;
                     removeElement(draggedElementId);
                     setIsModified(true);
                 }
@@ -79,7 +80,7 @@ export const List = (props: BoardProps) => {
     }
 
     return (
-        <div>
+        <div className="overflow-auto">
             <div className="container">
                 <div className="card list-column">
                     <div className="card-header p-1">
