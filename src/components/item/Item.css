@@ -4,6 +4,7 @@
 }
 
 .task {
+    width: 100%;
     position: relative;
     cursor: pointer;
 }
@@ -18,4 +19,25 @@
 
 .done {
     border: 2px solid green;
+}
+
+.action-items {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.edit-action {
+    opacity: 0.2;
+} 
+.edit-action:hover {
+    opacity: 0.4;
+    transform: scale(1.2);
+}
+
+.delete-action {
+    opacity: 0.2;
+} 
+.delete-action:hover {
+    opacity: 0.4;
+    transform: scale(1.2);
 }
