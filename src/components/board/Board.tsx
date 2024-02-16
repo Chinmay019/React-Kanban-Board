@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { List } from "../list/List";
 import {ItemProps} from "../../models/Types";
 import "./Board.css";
@@ -31,10 +31,10 @@ export default function Board () {
         },
       ];
       
-    const [ItemList,setItemList] = useState(initial);
+    const [ItemList,setItemList] = useState<ItemProps[]>(initial);
 
     return (
-        <>
+        <div>
             {/* <div className="main-board">
                 <div className="row">
                     <div className="col m-1" id="todoContainer">
@@ -52,13 +52,13 @@ export default function Board () {
                     <List title="To-Do" category="1" items={ItemList} setItemList={setItemList}/>
                 </div>
                 <div className="min-h-[100px] rounded-lg min-w-[150px]">
-                    <List title="Doing" category="2" items={ItemList} setItemList={setItemList}/>
+                    <List title="Doing" category="2" items={ItemList} setItemList={() => setItemList}/>
                 </div>
                 <div className="min-h-[100px] rounded-lg min-w-[150px]">
                     <List title="Done" category="3" items={ItemList} setItemList={setItemList}/>
                 </div>
             </div>
-        </>
+        </div>
 
     )
 }

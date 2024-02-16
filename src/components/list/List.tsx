@@ -1,15 +1,14 @@
 import { Item } from "../item/Item";
 import "./List.css";
 import { ItemProps } from "../../models/Types";
-import React, { useEffect, useState } from "react";
-// import { getTasks } from "../../service/Actions";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+// import { getTasks, deleteTask } from '../../service/Actions';
 
-type BoardProps = {
+interface BoardProps {
     title: string,
     category: string,
     items: ItemProps[],
-    // setItemProps: React.Dispatch<React.SetStateAction<any>>,
-    setItemProps: (params : unknown) => void
+    setItemList: Dispatch<SetStateAction<ItemProps[]>>
 }
 
 
@@ -52,23 +51,22 @@ export const List = (props: BoardProps) => {
 
     const handleOnDrop = (e: React.DragEvent, targetCategory: string) => {
         const draggedElementId = e.dataTransfer.getData("id") as string;
-        console.log(draggedElementId);
-        const classes = e.target.className;
-        console.log(classes, typeof classes === "string");
-        if (classes.includes("dropzone")) {
-            console.log(itemDragged);
-            // e.target.appendChild(itemDragged);
-            removeElement(draggedElementId);
-            setIsModified(true);
-        }
-        ItemList?.forEach(item => {
-            if (item.id == draggedElementId) {
-                item.category = targetCategory;
+        ItemList.forEach(item => {
+            if (item.id == draggedElementId && item.category === targetCategory) {
+                return;
+            } else if (item.id == draggedElementId && item.category != targetCategory) {
+                const classes = e.target.className;
+                if (classes.includes("dropzone")) {
+                    removeElement(draggedElementId);
+                    setIsModified(true);
+                }
             }
         })
-        console.log("dragging stopped");
-        console.log(targetCategory);
-        console.log(ItemList);
+    }
+
+    const deleteTask = (taskId: string) => {
+        removeElement(taskId);
+        setIsModified(true);
     }
 
     const fetchFilteredTasks = (cat: string): ItemProps[] | null => {
@@ -81,7 +79,7 @@ export const List = (props: BoardProps) => {
     }
 
     return (
-        <>
+        <div>
             <div className="container">
                 <div className="card list-column">
                     <div className="card-header p-1">
@@ -92,22 +90,22 @@ export const List = (props: BoardProps) => {
                     <div className="card-body dropzone" onDragOver={ handleOnDragOver } onDrop={ (e) => handleOnDrop(e, props.category) }>
                         { props.category == "1" && todoTasks?.map(task => (
                             <div onDragStart={ (e) => handleOnDrag(e, task.id) } onDragOver={ handleOnDragOver }>
-                                <Item key={ task.id } id={ task.id } title={ task.title } description={ task.description } category={ task.category } />
+                                <Item key={ task.id } item={ task } deleteTask={ deleteTask } />
                             </div>
                         )) }
                         { props.category == "2" && doingTasks?.map(task => (
                             <div onDragStart={ (e) => handleOnDrag(e, task.id) } onDragOver={ handleOnDragOver }>
-                                <Item key={ task.id } id={ task.id } title={ task.title } description={ task.description } category={ task.category } />
+                                <Item key={ task.id } item={ task } deleteTask={ deleteTask } />
                             </div>
                         )) }
                         { props.category == "3" && doneTasks?.map(task => (
                             <div onDragStart={ (e) => handleOnDrag(e, task.id) } onDragOver={ handleOnDragOver }>
-                                <Item key={ task.id } id={ task.id } title={ task.title } description={ task.description } category={ task.category } />
+                                <Item key={ task.id } item={ task } deleteTask={ deleteTask } />
                             </div>
                         )) }
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

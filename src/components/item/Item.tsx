@@ -2,13 +2,18 @@ import { ItemProps } from "../../models/Types";
 import "./Item.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
-// import { deleteTask } from "../../service/Actions";
+// import { deleteTask } from '../../service/Actions';
 
-export const Item = (props: ItemProps) => {
-    const itemName: string = props.title;
-    const itemDescription: string = props.description;
+interface ListProps {
+    item: ItemProps,
+    deleteTask: (param: string) => void
+}
+
+export const Item = (props: ListProps) => {
+    const itemName: string = props.item.title;
+    const itemDescription: string = props.item.description;
     let itemClass: string = '';
-    switch (props.category) {
+    switch (props.item.category) {
         case "1":
             itemClass = "to-do";
             break;
@@ -23,7 +28,7 @@ export const Item = (props: ItemProps) => {
     }
 
     return (
-        <div id={ props.id } className="task" draggable>
+        <div id={ props.item.id } className="task" draggable>
             <div className="flex">
                 <div className="action-items">
                     <div className="edit-action">
@@ -31,7 +36,7 @@ export const Item = (props: ItemProps) => {
                     </div>
                     <div className="delete-action" onClick={ () => {
                         if(confirm("Are you sure you want to delete?")){
-                            console.log("deleting task....")
+                            props.deleteTask(props.item.id);
                         }
                     } }>
                         <FontAwesomeIcon icon={ faTrash } />
