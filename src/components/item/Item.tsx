@@ -3,11 +3,9 @@ import "./Item.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Draggable } from "react-beautiful-dnd";
-// import { deleteTask } from '../../service/Actions';
 
 interface ListProps {
     item: ItemProps,
-    // deleteTask: (param: string) => void
 }
 
 export const Item = (props: ListProps) => {
@@ -27,8 +25,6 @@ export const Item = (props: ListProps) => {
         default:
             break;
     }
-
-    console.log(props.item.id, typeof props.item.id)
 
     return (
         <Draggable draggableId={ props.item.id } index={ props.item.index }>
