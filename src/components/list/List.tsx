@@ -2,7 +2,6 @@ import { Item } from "../item/Item";
 import "./List.css";
 import { ItemProps } from "../../models/Types";
 import { Droppable } from "react-beautiful-dnd";
-// import { getTasks, deleteTask } from '../../service/Actions';
 
 interface BoardProps {
     title: string,
