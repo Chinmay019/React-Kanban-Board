@@ -3,6 +3,7 @@ export type ListProps = {
 }
 
 export type ItemProps = {
+    index: number,
     id: string,
     title: string,
     description: string,
