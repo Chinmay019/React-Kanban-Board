@@ -79,36 +79,22 @@ export default function Board () {
 
         // add into to-do list 
         if (destination.droppableId === '1') {
-            setTodoTasks([...todoTasks, {...modifiedTask, category: destination.droppableId}]);
+            setTodoTasks([...todoTasks, { ...modifiedTask, category: destination.droppableId }]);
         }
         // add into doing list
         if (destination.droppableId === "2") {
-            setDoingTasks([...doingTasks, {...modifiedTask, category: destination.droppableId}])
+            setDoingTasks([...doingTasks, { ...modifiedTask, category: destination.droppableId }])
         }
         //  add into done list
         if (destination.droppableId === "3") {
-            setDoneTasks([...doneTasks, {...modifiedTask, category: destination.droppableId}])
+            setDoneTasks([...doneTasks, { ...modifiedTask, category: destination.droppableId }])
         }
 
-        
+
     }
 
     return (
         <DragDropContext onDragEnd={ handleDragEnd }>
-
-            {/* <div> */ }
-            {/* <div className="main-board">
-                <div className="row">
-                    <div className="col m-1" id="todoContainer">
-                        <List title="To-Do" category="1" />
-                    </div>
-                    <div className="col m-1" id="doingContainer">
-                        <List title="Doing" category="2" />
-                    </div>
-                    <div className="col m-1" id="doneContainer">
-                        <List title="Done" category="3" />
-                    </div>
-                </div> */}
             <div className="container m-4 grid gap-2 sm:grid-cols-3 box-border">
                 <div className="min-h-[100px] rounded-lg min-w-[150px]">
                     <List title="To-Do" category="1" items={ todoTasks } />
@@ -120,8 +106,6 @@ export default function Board () {
                     <List title="Done" category="3" items={ doneTasks } />
                 </div>
             </div>
-            {/* </div> */ }
         </DragDropContext>
-
     )
 }
