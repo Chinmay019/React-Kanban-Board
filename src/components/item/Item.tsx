@@ -9,6 +9,7 @@ interface ListProps {
 }
 
 export const Item = (props: ListProps) => {
+    console.log(props)
     const itemName: string = props.item.title;
     const itemDescription: string = props.item.description;
     let itemClass: string = '';
@@ -34,7 +35,7 @@ export const Item = (props: ListProps) => {
                         ref={ provided.innerRef }
                         { ...provided.draggableProps }
                         { ...provided.dragHandleProps }
-                        isDragging={ snapshot.isDragging }
+                        // isDragging={ snapshot.isDragging }
                     >
                         <div className="flex">
                             <div className="action-items">
@@ -49,14 +50,15 @@ export const Item = (props: ListProps) => {
                                     <FontAwesomeIcon icon={ faTrash } />
                                 </div>
                             </div>
-                            <div className="card grow mb-3">
+                            <div className="grow mb-3">
                                 <div className={ `${itemClass} rounded-lg` }>
-                                    <div className="card-header">
-                                        <h5 className="item-header">
+                                    <div className="item-header">
+                                        <h5>
                                             { itemName }
                                         </h5>
                                     </div>
-                                    <div className="card-body break-words">
+                                    <hr></hr>
+                                    <div className="task-contents break-words">
                                         { itemDescription }
                                     </div>
                                 </div>

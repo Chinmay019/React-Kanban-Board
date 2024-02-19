@@ -54,6 +54,7 @@ export default function Board () {
     }, [])
 
     const handleDragEnd = (result: any) => {
+        if (!result.destination) return;
         const { source, destination, draggableId } = result;
         if (destination.droppableId === source.droppableId) return;
 
@@ -95,15 +96,15 @@ export default function Board () {
 
     return (
         <DragDropContext onDragEnd={ handleDragEnd }>
-            <div className="container m-4 grid gap-2 sm:grid-cols-3 box-border">
+            <div className="container m-4 grid gap-2 sm:grid-cols-3 box-border main-board">
                 <div className="min-h-[100px] rounded-lg min-w-[150px]">
-                    <List title="To-Do" category="1" items={ todoTasks } />
+                    <List title="To-Do" category="1" items={ todoTasks } index={1} />
                 </div>
                 <div className="min-h-[100px] rounded-lg min-w-[150px]">
-                    <List title="Doing" category="2" items={ doingTasks } />
+                    <List title="Doing" category="2" items={ doingTasks }index={2} />
                 </div>
                 <div className="min-h-[100px] rounded-lg min-w-[150px]">
-                    <List title="Done" category="3" items={ doneTasks } />
+                    <List title="Done" category="3" items={ doneTasks } index={3} />
                 </div>
             </div>
         </DragDropContext>

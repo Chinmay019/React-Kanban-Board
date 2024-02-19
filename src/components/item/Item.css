@@ -1,6 +1,14 @@
 .item-header {
-    padding-left: 5px;
-    margin: 0;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.task-contents {
+    display: inline-block;
+    margin: 0 15px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .task {
@@ -9,15 +17,21 @@
 }
 
 .to-do {
-    border: 2px solid blue;
+    border: 3px solid blue;
+    background-color: #1A81FF;
+    color: #d9d9ee;
 }
 
 .doing {
     border: 2px solid yellow;
+    background-color: #d43Fa7;
+    color: #e9c5dd
 }
 
 .done {
     border: 2px solid green;
+    background-color: #5dbb61;
+    color: #dae6db
 }
 
 .action-items {
@@ -27,7 +41,8 @@
 
 .edit-action {
     opacity: 0.2;
-} 
+}
+
 .edit-action:hover {
     opacity: 0.4;
     transform: scale(1.2);
@@ -35,7 +50,8 @@
 
 .delete-action {
     opacity: 0.2;
-} 
+}
+
 .delete-action:hover {
     opacity: 0.4;
     transform: scale(1.2);

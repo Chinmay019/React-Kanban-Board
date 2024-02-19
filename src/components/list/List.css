@@ -11,3 +11,15 @@
     height: 50vh;
     min-height: 200px;
 }
+
+.to-do-column{
+    background-color: #73B1FF;
+}
+
+.doing-column {
+    background-color: #F6ADEE;
+}
+
+.done-column {
+    background-color: #E1F0E1;
+}
