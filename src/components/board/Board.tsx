@@ -96,7 +96,7 @@ export default function Board () {
 
     return (
         <DragDropContext onDragEnd={ handleDragEnd }>
-            <div className="container m-4 grid gap-2 sm:grid-cols-3 box-border main-board">
+            <div className="container m-4 grid gap-2 sm:grid-cols-3 box-border main-board px-3 py-6">
                 <div className="min-h-[100px] rounded-lg min-w-[150px]">
                     <List title="To-Do" category="1" items={ todoTasks } index={1} />
                 </div>
