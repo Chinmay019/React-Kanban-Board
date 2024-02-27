@@ -23,8 +23,6 @@ export const List = (props: BoardProps) => {
         default: break;
     }
 
-    console.log()
-    console.log("props: ", props)
     return (
             <div className={`container `}>
                 <div className="card list-column">

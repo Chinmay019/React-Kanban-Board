@@ -4,6 +4,8 @@ import { ItemProps } from "../../models/Types";
 import "./Board.css";
 import { DragDropContext } from 'react-beautiful-dnd';
 import { deleteItemById, findItemByID } from '../../utils/helper';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 
 const initial: Array<ItemProps> = [
     {
@@ -96,15 +98,34 @@ export default function Board () {
 
     return (
         <DragDropContext onDragEnd={ handleDragEnd }>
-            <div className="container m-4 grid gap-2 sm:grid-cols-3 box-border main-board px-3 py-6">
-                <div className="min-h-[100px] rounded-lg min-w-[150px]">
-                    <List title="To-Do" category="1" items={ todoTasks } index={1} />
+            <div className="main-board">
+                <div className="container grid gap-2 sm:grid-cols-3 box-border mt-6">
+                    <div className="flex justify-content-center">
+                        <button className="btn btn-outline-primary rounded-full" aria-label="Add To-Do Task" title="Add To-Do Task">
+                            <FontAwesomeIcon icon= { faCirclePlus } />
+                        </button>
+                    </div>
+                    <div className="flex justify-content-center" aria-label="Add Doing Task" title="Add Doing Task">
+                        <button className="btn btn-outline-warning rounded-full" >
+                        <FontAwesomeIcon icon= { faCirclePlus } />
+                        </button>
+                    </div>
+                    <div className="flex justify-content-center" aria-label="Add Done Task" title="Add Done Task">
+                        <button className="btn btn-outline-success rounded-full">
+                        <FontAwesomeIcon icon= { faCirclePlus } />
+                        </button>
+                    </div>
                 </div>
-                <div className="min-h-[100px] rounded-lg min-w-[150px]">
-                    <List title="Doing" category="2" items={ doingTasks }index={2} />
-                </div>
-                <div className="min-h-[100px] rounded-lg min-w-[150px]">
-                    <List title="Done" category="3" items={ doneTasks } index={3} />
+                <div className="container grid gap-2 sm:grid-cols-3 box-border px-3 py-6">
+                    <div className="min-h-[100px] rounded-lg min-w-[150px]">
+                        <List title="To-Do" category="1" items={ todoTasks } index={ 1 } />
+                    </div>
+                    <div className="min-h-[100px] rounded-lg min-w-[150px]">
+                        <List title="Doing" category="2" items={ doingTasks } index={ 2 } />
+                    </div>
+                    <div className="min-h-[100px] rounded-lg min-w-[150px]">
+                        <List title="Done" category="3" items={ doneTasks } index={ 3 } />
+                    </div>
                 </div>
             </div>
         </DragDropContext>
