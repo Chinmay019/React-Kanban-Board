@@ -6,6 +6,8 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { deleteItemById, findItemByID } from '../../utils/helper';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import Modal from "../modal/CustomModal";
+import CustomModal from "../modal/CustomModal";
 
 const initial: Array<ItemProps> = [
     {
@@ -42,6 +44,8 @@ export default function Board () {
     const [todoTasks, setTodoTasks] = useState<ItemProps[]>([]);
     const [doingTasks, setDoingTasks] = useState<ItemProps[]>([]);
     const [doneTasks, setDoneTasks] = useState<ItemProps[]>([]);
+    const [showAddModal, setShowAddModal] = useState(false);
+    const [categoryClicked, setCategoryClicked] = useState('');
 
     useEffect(() => {
         setTodoTasks(() => {
@@ -101,18 +105,27 @@ export default function Board () {
             <div className="main-board">
                 <div className="container grid gap-2 sm:grid-cols-3 box-border mt-6">
                     <div className="flex justify-content-center">
-                        <button className="btn btn-outline-primary rounded-full" aria-label="Add To-Do Task" title="Add To-Do Task">
-                            <FontAwesomeIcon icon= { faCirclePlus } />
+                        <button className="btn btn-outline-primary rounded-full" aria-label="Add To-Do Task" title="Add To-Do Task" onClick={ () => {
+                            setShowAddModal(true);
+                            setCategoryClicked("1");
+                        } }>
+                            <FontAwesomeIcon icon={ faCirclePlus } />
                         </button>
                     </div>
                     <div className="flex justify-content-center" aria-label="Add Doing Task" title="Add Doing Task">
-                        <button className="btn btn-outline-warning rounded-full" >
-                        <FontAwesomeIcon icon= { faCirclePlus } />
+                        <button className="btn btn-outline-warning rounded-full" onClick={ () => {
+                            setShowAddModal(true);
+                            setCategoryClicked("2");
+                        } }>
+                            <FontAwesomeIcon icon={ faCirclePlus } />
                         </button>
                     </div>
                     <div className="flex justify-content-center" aria-label="Add Done Task" title="Add Done Task">
-                        <button className="btn btn-outline-success rounded-full">
-                        <FontAwesomeIcon icon= { faCirclePlus } />
+                        <button className="btn btn-outline-success rounded-full" onClick={ () => {
+                            setShowAddModal(true);
+                            setCategoryClicked("3");
+                        } }>
+                            <FontAwesomeIcon icon={ faCirclePlus } />
                         </button>
                     </div>
                 </div>
@@ -126,6 +139,7 @@ export default function Board () {
                     <div className="min-h-[100px] rounded-lg min-w-[150px]">
                         <List title="Done" category="3" items={ doneTasks } index={ 3 } />
                     </div>
+                    <CustomModal show={ showAddModal } close={ () => setShowAddModal(false) } category={ categoryClicked } operation="add" />
                 </div>
             </div>
         </DragDropContext>
