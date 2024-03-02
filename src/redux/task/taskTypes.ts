@@ -1,0 +1,9 @@
+export const ADD_TO_DO_TASK = "ADD_TO_DO_TASK";
+export const DELETE_TO_DO_TASK = "DELETE_TO_DO_TASK";
+export const EDIT_TO_DO_TASK = "EDIT_TO_DO_TASK";
+export const ADD_DOING_TASK = "ADD_DOING_TASK";
+export const DELETE_DOING_TASK = "DELETE_DOING_TASK";
+export const EDIT_DOING_TASK = "EDIT_DOING_TASK";
+export const ADD_DONE_TASK = "ADD_DONE_TASK";
+export const DELETE_DONE_TASK = "DELETE_DONE_TASK";
+export const EDIT_DONE_TASK = "EDIT_DONE_TASK";

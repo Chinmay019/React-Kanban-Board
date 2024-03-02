@@ -6,7 +6,6 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { deleteItemById, findItemByID } from '../../utils/helper';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-import Modal from "../modal/CustomModal";
 import CustomModal from "../modal/CustomModal";
 
 const initial: Array<ItemProps> = [
@@ -18,27 +17,28 @@ const initial: Array<ItemProps> = [
         category: "1",
     },
     {
-        index: 3,
+        index: 2,
         id: "2",
         title: "Item 2",
         description: "Description 2",
         category: "2",
     },
     {
-        index: 4,
+        index: 3,
         id: "3",
         title: "Item 3",
         description: "Description 3",
         category: "3",
     },
     {
-        index: 2,
+        index: 4,
         id: "4",
         title: "Item 4",
         description: "Description 4",
         category: "1",
     },
 ];
+
 export default function Board () {
     // const [ItemList, setItemList] = useState<ItemProps[]>(initial);
     const [todoTasks, setTodoTasks] = useState<ItemProps[]>([]);
@@ -98,6 +98,18 @@ export default function Board () {
         }
 
 
+    }
+
+    const addTask = (title: string, description: string, category: string) => {
+        console.log(title, description, category);
+        const newItem: ItemProps = {
+            index: initial.length + 1,
+            id: (initial.length + 1).toString(),
+            title: title,
+            description: description,
+            category: category,
+        };
+        initial.push(newItem);
     }
 
     return (
